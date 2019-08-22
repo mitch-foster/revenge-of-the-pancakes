@@ -33,8 +33,8 @@ Sample
 
 Input | Output
 ------------ | -------------
-5 | 
-- | Case #1: 1
+5 |
+'-' | Case #1: 1
 -+ | Case #2: 1
 +- | Case #3: 2
 +++ | Case #4: 0
