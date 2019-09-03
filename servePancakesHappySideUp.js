@@ -12,6 +12,13 @@ function servePancakesHappySideUp(numberOfStacks, pancakeStacksArray) {
     if (e.split('').filter(e => e !== '-' && e !== '+').length !== 0) throw new Error(`Invalid character in pancake stack #${i+1}. Stacks of pancakes can only include the characters + and - .`);
   })
 
+  function flipPancakes(indexToFlipAt, pancakeArray) {
+    const pancakeArrayCopy = [...pancakeArray];
+    const pancakesToFlip = pancakeArrayCopy.splice(0,indexToFlipAt + 1);
+    const flippedPancakes = pancakesToFlip.reverse().map(e => e === '+' ? '-' : '+');
+    return [...flippedPancakes, ...pancakeArrayCopy];
+  }
+
   function findIndexToFlipFrom(pancakeArray) {
     for (i = 0; i < pancakeArray.length; i++) {
       if (pancakeArray[i+1] === '-') return i;
@@ -25,13 +32,6 @@ function servePancakesHappySideUp(numberOfStacks, pancakeStacksArray) {
     }
     // no pancakes are face-down
     return null;
-  }
-
-  function flipPancakes(indexToFlipAt, pancakeArray) {
-    const pancakeArrayCopy = [...pancakeArray];
-    const pancakesToFlip = pancakeArrayCopy.splice(0,indexToFlipAt + 1);
-    const flippedPancakes = pancakesToFlip.reverse().map(e => e === '+' ? '-' : '+');
-    return [...flippedPancakes, ...pancakeArrayCopy];
   }
 
   function ensureHappySideUp(pancakeStack, stackNumber) {
