@@ -28,9 +28,10 @@ function servePancakesHappySideUp(numberOfStacks, pancakeStacksArray) {
   }
 
   function flipPancakes(indexToFlipAt, pancakeArray) {
-    const pancakesToFlip = pancakeArray.splice(0,indexToFlipAt + 1);
+    const pancakeArrayCopy = [...pancakeArray];
+    const pancakesToFlip = pancakeArrayCopy.splice(0,indexToFlipAt + 1);
     const flippedPancakes = pancakesToFlip.reverse().map(e => e === '+' ? '-' : '+');
-    return [...flippedPancakes, ...pancakeArray];
+    return [...flippedPancakes, ...pancakeArrayCopy];
   }
 
   function ensureHappySideUp(pancakeStack, stackNumber) {
